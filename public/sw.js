@@ -1,21 +1,12 @@
 /* Este archivo debe estar colocado en la carpeta raíz del sitio.
- * 
- * Cualquier cambio en el contenido de este archivo hace que el service
+ * * Cualquier cambio en el contenido de este archivo hace que el service
  * worker se reinstale. */
 
 /**
  * Cambia el número de la versión cuando cambia el contenido de los
  * archivos.
- * 
- * El número a la izquierda del punto (.), en este caso <q>1</q>, se
- * conoce como número mayor y se cambia cuando se realizan
- * modificaciones grandes o importantes.
- * 
- * El número a la derecha del punto (.), en este caso <q>00</q>, se
- * conoce como número menor y se cambia cuando se realizan
- * modificaciones menores.
  */
-const VERSION = "1.0"
+const VERSION = "1.1" // <- Subimos la versión para forzar la actualización limpia
 
 /**
  * Nombre de la carpeta de caché.
@@ -31,12 +22,21 @@ const ARCHIVOS = [
  "css/estilos.css",
  "css/material-symbols-outlined.css",
  "css/transicion_pestanas.css",
+ "equipo.html", // <- Agregamos tu nueva pantalla de equipo
  "favicon.ico",
  "fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].codepoints",
  "fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf",
  "fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2",
  "fonts/Roboto-Italic-VariableFont_wdth,wght.ttf",
  "fonts/Roboto-VariableFont_wdth,wght.ttf",
+ // Agregamos las fotos de los integrantes del equipo:
+ "img/Angel.png",
+ "img/Brian.png",
+ "img/Cris.png",
+ "img/Daniel.png",
+ "img/Nuci.png",
+ "img/Pluma.png",
+ // Mantenemos los iconos del sistema:
  "img/icono2048.png",
  "img/maskable_icon.png",
  "img/maskable_icon_x128.png",
@@ -108,34 +108,26 @@ if (self instanceof ServiceWorkerGlobalScope) {
 }
 
 async function llenaElCache() {
- console.log("Intentando cargar caché:", CACHE)
- // Borra todos los cachés.
+ // Borra todos los cachés viejos obligatoriamente
  const keys = await caches.keys()
  for (const key of keys) {
   await caches.delete(key)
  }
- // Abre el caché de este service worker.
+ // Abre el nuevo caché
  const cache = await caches.open(CACHE)
- // Carga el listado de ARCHIVOS.
  await cache.addAll(ARCHIVOS)
- console.log("Cache cargado:", CACHE)
- console.log("Versión:", VERSION)
+ console.log("Cache cargado exitosamente:", CACHE)
+ console.log("Nueva Versión:", VERSION)
 }
 
 /** @param {FetchEvent} evt */
 async function buscaLaRespuestaEnElCache(evt) {
- // Abre el caché.
  const cache = await caches.open(CACHE)
  const request = evt.request
- /* Busca la respuesta a la solicitud en el contenido del caché, sin
-  * tomar en cuenta la parte después del símbolo "?" en la URL. */
  const response = await cache.match(request, { ignoreSearch: true })
  if (response === undefined) {
-  /* Si no la encuentra, empieza a descargar de la red y devuelve
-   * la promesa. */
   return fetch(request)
  } else {
-  // Si la encuentra, devuelve la respuesta encontrada en el caché.
   return response
  }
 }

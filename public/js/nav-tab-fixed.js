@@ -22,6 +22,11 @@ export class NavTabFixed extends HTMLElement {
      <span class="material-symbols-outlined">bottom_panel_close</span>
      Select
     </a>
+
+    <a ${resaltaSiEstasEn(["/equipo.html"])} href="equipo.html">
+     <span class="material-symbols-outlined">groups</span>
+     Equipo
+    </a>
  
     <a ${resaltaSiEstasEn(["/ayuda.html"])} href="ayuda.html">
      <span class="material-symbols-outlined">help</span>
