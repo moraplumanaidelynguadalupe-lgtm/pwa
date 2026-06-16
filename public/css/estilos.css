@@ -1,4 +1,4 @@
-html {
+:root {
  /* Indica los temas del sistema operativo que son soportados. */
  color-scheme: light dark;
  --tabWidth: 3.75rem;
@@ -18,12 +18,9 @@ form>section {
 @font-face {
  font-family: 'Roboto';
  src: url('../fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
- /* Rango del eje de peso (wght) */
  font-weight: 100 900;
- /* Rango del eje de anchura (wdth) */
  font-stretch: 75% 100%;
  font-style: normal;
- /* Mejora el rendimiento de carga de texto */
  font-display: swap;
 }
 
@@ -37,7 +34,7 @@ form>section {
  font-display: swap;
 }
 
-html {
+:root {
  --Font: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
  --colIntIos: white;
  --colIntIosOnBk: #2acc2a;
@@ -48,16 +45,11 @@ html {
  --md-ref-typeface-plain: var(--Font);
  /* Brand typeface */
  --md-ref-typeface-brand: var(--Font);
- --md-sys-typescale-label-large-weight-prominent:
-  var(--md-ref-typeface-weight-bold);
- --md-box_shadow_level4:
-  0 var(--md-sys-elevation-level4) var(--md-sys-elevation-level4) var(--md-sys-color-shadow);
- --md-box_shadow_level3:
-  0 var(--md-sys-elevation-level3) var(--md-sys-elevation-level3) var(--md-sys-color-shadow);
- --md-box_shadow_level2:
-  0 var(--md-sys-elevation-level2) var(--md-sys-elevation-level2) var(--md-sys-color-shadow);
- --md-box_shadow_level1:
-  0 var(--md-sys-elevation-level1) var(--md-sys-elevation-level1) var(--md-sys-color-shadow);
+ --md-sys-typescale-label-large-weight-prominent: var(--md-ref-typeface-weight-bold);
+ --md-box_shadow_level4: 0 var(--md-sys-elevation-level4) var(--md-sys-elevation-level4) var(--md-sys-color-shadow);
+ --md-box_shadow_level3: 0 var(--md-sys-elevation-level3) var(--md-sys-elevation-level3) var(--md-sys-color-shadow);
+ --md-box_shadow_level2: 0 var(--md-sys-elevation-level2) var(--md-sys-elevation-level2) var(--md-sys-color-shadow);
+ --md-box_shadow_level1: 0 var(--md-sys-elevation-level1) var(--md-sys-elevation-level1) var(--md-sys-color-shadow);
  --md-box_shadow_level0: none;
  --iconSize: 1.5rem;
  --avatarSize: 2.5rem;
@@ -72,6 +64,21 @@ html {
  --state-focus-transparency-percentage: 88%;
  /* Hover state layer opacity */
  --state-hover-transparency-percentage: 92%;
+
+ /* ========================================== */
+ /* COLORES UPCLASS (OBLIGATORIOS MODO CLARO)   */
+ /* ========================================== */
+ --md-sys-color-primary: #633BBC !important;
+ --md-sys-color-on-primary: #FFFFFF !important;
+ --md-sys-color-secondary: #FF5252 !important;
+ --md-sys-color-on-secondary: #FFFFFF !important;
+ --md-sys-color-outline: #633BBC !important;
+ 
+ --md-sys-color-background: #F8F9FA !important;
+ --md-sys-color-on-background: #0D1B3E !important;
+ --md-sys-color-surface: #FFFFFF !important;
+ --md-sys-color-on-surface: #0D1B3E !important;
+
  background-color: var(--md-sys-color-background);
 }
 
@@ -103,25 +110,49 @@ a {
 }
 
 @media (prefers-color-scheme: light) {
- html {
+ :root {
   --md-riple-color: #00000020;
  }
 }
 
 @media (prefers-color-scheme: dark) {
- html {
+ :root {
   --md-riple-color: #ffffff40;
+  
+  /* ========================================== */
+  /* COLORES UPCLASS (OBLIGATORIOS MODO OSCURO)  */
+  /* ========================================== */
+  --md-sys-color-background: #121214 !important;
+  --md-sys-color-on-background: #E3E2E6 !important;
+  --md-sys-color-surface: #1E1B24 !important;
+  --md-sys-color-on-surface: #E3E2E6 !important;
+  --md-sys-color-primary: #9D84FF !important; 
+  --md-sys-color-outline: #9D84FF !important;
  }
 }
 
 @keyframes md-ripple {
-
  from {
   background-size: 100%;
  }
-
  to {
   background-size: 15000%;
  }
+}
 
+/* ========================================== */
+/* CORRECCIÓN VISUAL PARA TU APP BAR        */
+/* ========================================== */
+md-app-bar {
+ background-color: var(--md-sys-color-primary) !important;
+ color: var(--md-sys-color-on-primary) !important;
+ display: block; 
+ width: 100%;
+}
+
+md-app-bar h1 {
+ color: var(--md-sys-color-on-primary) !important;
+ margin: 0;
+ padding: 1rem;
+ text-align: center;
 }
