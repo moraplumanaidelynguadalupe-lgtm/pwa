@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es" class="light dark">
+
+<head>
+
+ <meta charset="UTF-8">
+
+ <title>PWA con Formulario</title>
+
+ <meta name="description" content="Ejemplo de PWA con Formulario">
+
+ <script type="module" src="js/registraServiceWorker.js"></script>
+ <script type="module" src="libclienteweb/manejaErrores.js"></script>
+
+ <meta name="viewport" content="width=device-width">
+ <meta name="theme-color" content="#fffbfe">
+ <link rel="icon" sizes="32x32" href="favicon.ico">
+ <link rel="manifest" href="site.webmanifest">
+ <link rel="stylesheet" href="css/material-symbols-outlined.css">
+ <link rel="stylesheet" href="material-tokens/css/baseline.css">
+ <link rel="stylesheet" href="css/estilos.css">
+ <script src="ungap/es.js"></script>
+
+ <script type="module" src="libmde/md-app-bar.js"></script>
+ <script type="module" src="js/nav-tab-fixed.js"></script>
+
+ <link rel="stylesheet" href="libmde/md-tab.css">
+ <link rel="stylesheet" href="libmde/md-filled-text-field.css">
+ <link rel="stylesheet" href="libmde/md-filled-button.css">
+ <link rel="stylesheet" href="libmde/md-outline-button.css">
+ <link rel="stylesheet" href="css/transicion_pestanas.css">
+
+</head>
+
+<body>
+
+ <form id="formulario" novalidate>
+
+  <md-app-bar class="centered" adicional="tab">
+
+   <h1>PWA con Formulario</h1>
+
+  </md-app-bar>
+
+  <nav-tab-fixed id="tab"></nav-tab-fixed>
+
+  <section>
+
+   <!-- Usa
+    class="float"
+   cuando quieras que la etiqueta esté arriba todo el tiempo. -->
+   <p>
+    <label class="md-filled-text-field float">
+     <output name="respuesta">Todavía no hay respuesta</output>
+     <span>Respuesta</span>
+    </label>
+   </p>
+
+   <p>
+    <label class="md-filled-text-field">
+     <input name="nombre" required placeholder="Nombre*">
+     <span>Nombre *</span>
+     <small id="supportingNombre">Obligatorio</small>
+    </label>
+   </p>
+
+   <p>
+    <label class="md-filled-text-field">
+     <input name="email" type="email" placeholder="Email">
+     <span accesskey="M">Email</span>
+     <small id="supportingEmail">Texto con formato de email</small>
+    </label>
+   </p>
+
+   <p>
+    <label class="md-filled-text-field float">
+     <input name="fecha" type="date" placeholder="Fecha">
+     <span>Fecha de nacimiento</span>
+    </label>
+   </p>
+
+   <p>
+    <label class="md-filled-text-field">
+     <textarea name="dieccion" rows="3" placeholder="Dirección"></textarea>
+     <span>Dirección</span>
+    </label>
+   </p>
+
+   <p>
+    <button id="botonSaludo" class="md-filled-button">Saludar</button>
+    <button id="botonDatos" class="md-outline-button">Datos</button>
+   </p>
+
+  </section>
+
+ </form>
+
+ <script type="module">
+
+  import { muestraTextoDeAyuda } from "./libclienteweb/muestraTextoDeAyuda.js"
+
+  formulario.nombre.addEventListener("input", copiaMensajes)
+  formulario.email.addEventListener("input", copiaMensajes)
+  formulario.addEventListener("submit", procesa)
+
+  function copiaMensajes() {
+   muestraTextoDeAyuda(formulario.nombre, supportingNombre, "Obligatorio")
+   muestraTextoDeAyuda(
+    formulario.email, supportingEmail, "Texto con formato de email"
+   )
+  }
+
+  /**
+   * @param {SubmitEvent} evt
+   */
+  function procesa(evt) {
+   evt.preventDefault()
+   copiaMensajes()
+   if (
+    formulario.nombre.validity.valid
+    && formulario.email.validity.valid
+    && formulario.fecha.validity.valid
+    && formulario.dieccion.validity.valid
+   ) {
+    const botonSeleccionado = evt.submitter
+    if (botonSeleccionado === botonSaludo) {
+     saluda()
+    } else if (botonSeleccionado === botonDatos) {
+     datos()
+    }
+   }
+  }
+
+  function saluda() {
+   formulario.respuesta.value = `Hola ${formulario.nombre.value}`
+  }
+
+  function datos() {
+   formulario.respuesta.value =
+    `Nombre: ${formulario.nombre.value} Email: ${formulario.email.value}`
+  }
+
+ </script>
+
+</body>
+
+</html>
