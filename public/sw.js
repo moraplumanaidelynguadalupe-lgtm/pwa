@@ -115,8 +115,17 @@ async function llenaElCache() {
   await caches.delete(key)
  }
  // Abre el nuevo caché
- const cache = await caches.open(CACHE)
- await cache.addAll(ARCHIVOS)
+  const cache = await caches.open(CACHE)
+
+ for (const archivo of ARCHIVOS) {
+  try {
+   await cache.add(archivo)
+   console.log("OK:", archivo)
+  } catch (e) {
+   console.error("ERROR EN:", archivo, e)
+  }
+ }
+
  console.log("Cache cargado exitosamente:", CACHE)
  console.log("Nueva Versión:", VERSION)
 }
