@@ -16,19 +16,20 @@ import { muestraError } from "./muestraError.js"
    })
  }
 }
-
+/*
 window.onerror = function (
- /** @type {Event | string} */ _event,
- /** @type {string | undefined} */ _fuente,
- /** @type {number | undefined} */ _numeroDeLinea,
- /** @type {number | undefined} */ _numeroDeColumna,
- /** @type {Error | undefined} */ error
+  _event,
+  _fuente,
+  _numeroDeLinea,
+  _numeroDeColumna,
+  error
 ) {
- muestraError(error)
- return true
+  muestraError(error)
+  return true
 }
 
 window.addEventListener('unhandledrejection', event => {
- muestraError(event.reason)
- event.preventDefault()
+  muestraError(event.reason)
+  event.preventDefault()
 })
+*/
