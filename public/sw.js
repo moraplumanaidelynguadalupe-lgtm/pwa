@@ -6,7 +6,7 @@
  * Cambia el número de la versión cuando cambia el contenido de los
  * archivos.
  */
-const VERSION = "1.1" // <- Subimos la versión para forzar la actualización limpia
+const VERSION = "1.2" // <- Subimos a 1.2 para forzar la lectura del GPS
 
 /**
  * Nombre de la carpeta de caché.
@@ -18,25 +18,26 @@ const CACHE = "pwamd"
  * línea.
  */
 const ARCHIVOS = [
+ "gps.html", // <- Corregido: Ya tiene su coma correspondiente al final
  "ayuda.html",
  "css/estilos.css",
  "css/material-symbols-outlined.css",
  "css/transicion_pestanas.css",
- "equipo.html", // <- Agregamos tu nueva pantalla de equipo
+ "equipo.html", 
  "favicon.ico",
  "fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].codepoints",
  "fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf",
  "fonts/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2",
  "fonts/Roboto-Italic-VariableFont_wdth,wght.ttf",
  "fonts/Roboto-VariableFont_wdth,wght.ttf",
- // Agregamos las fotos de los integrantes del equipo:
+ // Fotos de los integrantes del equipo:
  "img/Angel.png",
  "img/Brian.png",
  "img/Cris.png",
  "img/Daniel.png",
  "img/Nuci.png",
  "img/Pluma.png",
- // Mantenemos los iconos del sistema:
+ // Iconos del sistema:
  "img/icono2048.png",
  "img/maskable_icon.png",
  "img/maskable_icon_x128.png",
