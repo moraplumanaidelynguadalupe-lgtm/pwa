@@ -28,6 +28,11 @@ export class NavTabFixed extends HTMLElement {
      Equipo
     </a>
  
+    <a ${resaltaSiEstasEn(["/gps.html"])} href="gps.html">
+     <span class="material-symbols-outlined">location_on</span>
+     Ubicación
+    </a>
+    
     <a ${resaltaSiEstasEn(["/ayuda.html"])} href="ayuda.html">
      <span class="material-symbols-outlined">help</span>
      Ayuda

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <title>Ubicación GPS</title>
+
+ <script type="module" src="js/registraServiceWorker.js"></script>
+ <script type="module" src="libclienteweb/manejaErrores.js"></script>
+ 
+ <meta name="viewport" content="width=device-width">
+ <meta name="theme-color" content="#633BBC">
+ <link rel="icon" sizes="32x32" href="favicon.ico">
+ <link rel="manifest" href="site.webmanifest">
+ <link rel="stylesheet" href="css/material-symbols-outlined.css">
+ <link rel="stylesheet" href="material-tokens/css/baseline.css">
+ 
+ <link rel="stylesheet" href="./libmde/md-tab.css">
+ <link rel="stylesheet" href="./libmde/md-filled-text-field.css">
+ <link rel="stylesheet" href="./css/transicion_pestanas.css">
+ <link rel="stylesheet" href="./css/estilos.css">
+ 
+ <script src="ungap/es.js"></script>
+ <script type="module" src="libmde/md-app-bar.js"></script>
+ <script type="module" src="js/nav-tab-fixed.js"></script>
+</head>
+
+<body>
+
+ <md-app-bar adicional="tab">
+  <h1>Ubicación GPS</h1>
+ </md-app-bar>
+
+ <nav-tab-fixed id="tab"></nav-tab-fixed>
+
+ <section style="padding: 1rem; max-width: 500px; margin: 0 auto;">
+
+  <div style="text-align: center; margin-bottom: 2rem;">
+   <span class="material-symbols-outlined" style="font-size: 4rem; color: var(--md-sys-color-primary);">location_on</span>
+   <h2 style="margin: 0.5rem 0 0 0; font-size: 1.5rem; color: var(--md-sys-color-primary);">Coordenadas en Tiempo Real</h2>
+  </div>
+
+  <div style="margin-bottom: 1.5rem;">
+   <label style="display: block; font-weight: bold; margin-bottom: 0.5rem; color: var(--md-sys-color-primary);">Latitud:</label>
+   <input type="text" id="latitud" readonly value="Buscando..." style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.1); font-size: 1.1rem; box-sizing: border-box; color: var(--md-sys-color-on-background);">
+  </div>
+
+  <div style="margin-bottom: 1.5rem;">
+   <label style="display: block; font-weight: bold; margin-bottom: 0.5rem; color: var(--md-sys-color-primary);">Longitud:</label>
+   <input type="text" id="longitud" readonly value="Buscando..." style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.1); font-size: 1.1rem; box-sizing: border-box; color: var(--md-sys-color-on-background);">
+  </div>
+
+  <div id="status-box" style="padding: 1rem; border-radius: 8px; background-color: rgba(99, 59, 188, 0.1); border: 1px solid var(--md-sys-color-primary); font-size: 0.9rem; text-align: center;">
+   Esperando señal del satélite GPS...
+  </div>
+
+ </section>
+
+ <script>
+  const latOutput = document.getElementById('latitud');
+  const lonOutput = document.getElementById('longitud');
+  const statusBox = document.getElementById('status-box');
+
+  const opcionesGps = {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 0
+  };
+
+  if ("geolocation" in navigator) {
+    navigator.geolocation.watchPosition(
+      (posicion) => {
+        latOutput.value = posicion.coords.latitude;
+        lonOutput.value = posicion.coords.longitude;
+        statusBox.style.backgroundColor = "rgba(76, 175, 80, 0.1)";
+        statusBox.style.borderColor = "#4CAF50";
+        statusBox.style.color = "#4CAF50";
+        statusBox.innerText = "📍 Ubicación actualizada en tiempo real.";
+      },
+      (error) => {
+        statusBox.style.backgroundColor = "rgba(244, 67, 54, 0.1)";
+        statusBox.style.borderColor = "#F44336";
+        statusBox.style.color = "#F44336";
+        
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            statusBox.innerText = "❌ Permiso denegado. Por favor, activa los permisos de ubicación para esta app.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            statusBox.innerText = "❌ Señal de GPS no disponible.";
+            break;
+          case error.TIMEOUT:
+            statusBox.innerText = "❌ Tiempo de espera agotado al obtener la localización.";
+            break;
+          default:
+            statusBox.innerText = "❌ Error desconocido con el GPS.";
+            break;
+        }
+      }, 
+      opcionesGps
+    );
+  } else {
+    statusBox.innerText = "❌ Tu dispositivo no soporta geolocalización.";
+  }
+ </script>
+
+</body>
+</html>
