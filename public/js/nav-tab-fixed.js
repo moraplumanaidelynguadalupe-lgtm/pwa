@@ -31,8 +31,12 @@ export class NavTabFixed extends HTMLElement {
     <a ${resaltaSiEstasEn(["/ayuda.html"])} href="ayuda.html">
      <span class="material-symbols-outlined">help</span>
      Ayuda
+    </a>
+    
+     <a ${resaltaSiEstasEn(["/archivosCamara.html"])} href="archivosCamara.html">
+     <span class="material-symbols-outlined">add_photo_alternate</span>
+     Archivos
     </a>`
-
    this.creado = true
 
   }

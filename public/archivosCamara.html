@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivos de camara</title>
+    <meta charset="UTF-8">
+ <title>Equipo - PWA con Formulario</title>
+
+ <script type="module" src="js/registraServiceWorker.js"></script>
+ <script type="module" src="libclienteweb/manejaErrores.js"></script>
+ 
+ <meta name="viewport" content="width=device-width">
+ <meta name="theme-color" content="#633BBC">
+ <link rel="icon" sizes="32x32" href="favicon.ico">
+ <link rel="manifest" href="site.webmanifest">
+ <link rel="stylesheet" href="css/material-symbols-outlined.css">
+ <link rel="stylesheet" href="material-tokens/css/baseline.css">
+ <link rel="stylesheet" href="./css/estilos.css">
+ <script src="ungap/es.js"></script>
+
+ <script type="module" src="libmde/md-app-bar.js"></script>
+ <script type="module" src="js/nav-tab-fixed.js"></script>
+
+ <link rel="stylesheet" href="libmde/md-tab.css">
+ <link rel="stylesheet" href="libmde/md-list.css">
+ <link rel="stylesheet" href="css/transicion_pestanas.css">
+ <link rel="stylesheet" href="css/estilosArchivosCamara.css">
+</head>
+<body>
+ <md-app-bar adicional="tab">
+  <h1>Byte Force</h1>
+ </md-app-bar>
+ 
+ <nav-tab-fixed id="tab"></nav-tab-fixed>
+ <!DOCTYPE html>
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width">
+ <meta name="theme-color" content="#633BBC">
+
+ <title>Archivos y Cámara</title>
+
+ <link rel="stylesheet" href="css/material-symbols-outlined.css">
+ <link rel="stylesheet" href="libmde/md-filled-button.css">
+ <link rel="stylesheet" href="libmde/md-filled-text-field.css">
+
+ 
+</head>
+
+<body>
+
+ <h1> Archivos y Cámara</h1>
+
+ <!-- FOTO -->
+ <div class="card">
+  <label>
+   <span class="material-symbols-outlined icon">photo_camera</span>
+   Foto desde cámara
+   <input type="file" accept="image/*" capture="environment">
+  </label>
+ </div>
+
+ <!-- VIDEO -->
+ <div class="card">
+  <label>
+   <span class="material-symbols-outlined icon">videocam</span>
+   Video desde móvil
+   <input type="file" accept="video/*" capture="environment">
+  </label>
+ </div>
+
+ <!-- ARCHIVO -->
+ <div class="card">
+  <label>
+   <span class="material-symbols-outlined icon">folder</span>
+   Seleccionar archivo
+   <input type="file">
+  </label>
+ </div>
+
+</body>
+
+</html>
+ 
+</body>
+</html>
