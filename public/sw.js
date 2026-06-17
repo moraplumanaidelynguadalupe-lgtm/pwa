@@ -6,7 +6,7 @@
  * Cambia el número de la versión cuando cambia el contenido de los
  * archivos.
  */
-const VERSION = "1.2" // <- Subimos a 1.2 para forzar la lectura del GPS
+const VERSION = "1.3" // <- Subimos a 1.2 para forzar la lectura del GPS
 
 /**
  * Nombre de la carpeta de caché.
