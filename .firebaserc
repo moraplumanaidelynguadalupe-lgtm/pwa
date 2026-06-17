@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "pwamdex"
-  }
+    "default": "pwamd-acec5"
+  },
+  "targets": {},
+  "etags": {}
 }
