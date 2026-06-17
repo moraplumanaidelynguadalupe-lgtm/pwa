@@ -1,15 +1,15 @@
 {
- "short_name": "Formulario PWA",
- "name": "PWA con Formulario",
- "id": "/index.html",
- "start_url": "/index.html",
+ "short_name": "ByteForce",
+ "name": "Byte Force PWA",
+ "id": "/",
+ "start_url": "/",
  "display": "standalone",
  "theme_color": "#fffbfe",
  "background_color": "#fffbfe",
  "display_override": [
   "window-controls-overlay"
  ],
- "description": "PWA con componentes de Material Design.",
+ "description": "Aplicación oficial de Byte Force con componentes de Material Design.",
  "screenshots": [
   {
    "src": "/img/screenshot_horizontal.png",
@@ -28,28 +28,28 @@
  ],
  "icons": [
   {
-    "src": "img/maskable_icon_x96.png",
-    "sizes": "96x96",
-    "type": "image/png",
-    "purpose": "any maskable"
+   "src": "img/maskable_icon_x96.png",
+   "sizes": "96x96",
+   "type": "image/png",
+   "purpose": "any maskable"
   },
   {
-    "src": "img/maskable_icon_x192.png",
-    "sizes": "192x192",
-    "type": "image/png",
-    "purpose": "any maskable"
+   "src": "img/maskable_icon_x192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any maskable"
   },
   {
-    "src": "img/maskable_icon_x384.png",
-    "sizes": "384x384",
-    "type": "image/png",
-    "purpose": "any maskable"
+   "src": "img/maskable_icon_x384.png",
+   "sizes": "384x384",
+   "type": "image/png",
+   "purpose": "any maskable"
   },
   {
-    "src": "img/maskable_icon_x512.png",
-    "sizes": "512x512",
-    "type": "image/png",
-    "purpose": "any maskable"
+   "src": "img/maskable_icon_x512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
   }
-]
+ ]
 }
