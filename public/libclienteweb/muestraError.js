@@ -34,7 +34,7 @@ export function muestraError(error) {
  } else {
 
   console.error("Error", error)
-  alert("Error")
+  alert("Error: " + String(error))
 
  }
 
